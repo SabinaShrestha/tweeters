@@ -1,10 +1,11 @@
 class User < ApplicationRecord
-  EGG = 'https://cdn.pixabay.com/photo/2013/07/13/10/26/egg-157224_960_720.png'.freeze
-
+  EGG = '/assets/egg.png'
   after_create :make_egg
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :tweets
+  has_many :comments
   validates :handle, presence: true
   validates :handle, uniqueness: true
   serialize :followers, Array

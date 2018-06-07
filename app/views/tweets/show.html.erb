@@ -1,0 +1,15 @@
+<img src=<%= @tweet.avatar %> alt="avatar" class="img" />
+<p><%= @tweet.handle %></p>
+<hr />
+<p>
+  <%= @tweet.body %>
+</p>
+<hr />
+<strong>Comments</strong>
+<%= form_for [@tweet, @comment] do |f| %>
+  <%= f.text_field :body, placeholder: 'Say something...' %>
+<% end %>
+<% @comments.each do |c| %>
+  <h3><%= c.body %></h3>
+  <p><%= c.handle %></p>
+<% end %>

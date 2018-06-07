@@ -1,0 +1,33 @@
+<%= form_for @tweet do |f| %>
+  <p>
+  <%= f.text_field :body, required: true, placeholder: 'Say Something...' %>
+  </p>
+<% end %>
+
+<% @tweets.each do |tweet| %>
+  <div class="card">
+    <div class="card-body pointer" data-show="front">
+      <span class="c-body">
+        <a href="/tweets/<%= tweet.id %>">
+          <p>
+            <%= tweet.body %>
+          </p>
+        </a> 
+        <p>
+          <%= form_for tweet do |f| %>
+            <%= tweet.format_likes %>
+            <button>^</button>
+          <% end %>
+          <%= form_tag(downvote_path(tweet), method: :put) do %>
+            <button><strong>v</strong></button>
+          <% end %>
+        </p>
+      </span>
+      <span class="c-body hide">
+        <img class="img" alt="user_avatar" src=<%= tweet.avatar %> /> 
+        <p><%= tweet.handle %></p>
+      </span>
+      <button class="flippy">Flip</button>
+    </div>
+  </div>
+<% end %>

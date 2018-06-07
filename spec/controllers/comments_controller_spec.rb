@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe StaticPagesController, type: :controller do
+RSpec.describe CommentsController, type: :controller do
 
-  describe "GET #home" do
+  describe "GET #create" do
     it "returns http success" do
-      get :home
+      get :create
       expect(response).to have_http_status(:success)
     end
   end
